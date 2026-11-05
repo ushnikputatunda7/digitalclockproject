@@ -1,0 +1,129 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Digital Clock | Techno Main Salt Lake</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #000000;
+            color: #39ff88;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+        }
+
+        .clock-container {
+            text-align: center;
+            padding: 40px;
+            border: 2px solid #39ff88;
+            border-radius: 20px;
+            box-shadow: 0 0 25px #39ff88;
+        }
+
+        .college {
+            color: white;
+            font-size: 18px;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+        }
+
+        .clock {
+            font-size: 65px;
+            font-weight: bold;
+            text-shadow: 0 0 15px #39ff88;
+        }
+
+        .date {
+            color: #ffffff;
+            font-size: 18px;
+            margin-top: 20px;
+        }
+
+        .label {
+            color: #39ff88;
+            font-size: 13px;
+            letter-spacing: 4px;
+            margin-top: 15px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="clock-container">
+
+        <div class="college">
+            TECHNO MAIN SALT LAKE
+        </div>
+
+        <div class="clock" id="clock">
+            00:00:00
+        </div>
+
+        <div class="date" id="date">
+        </div>
+
+        <div class="label">
+            DIGITAL CLOCK
+        </div>
+
+    </div>
+
+    <script>
+
+        function updateClock() {
+
+            let now = new Date();
+
+            let hours = String(now.getHours())
+                .padStart(2, '0');
+
+            let minutes = String(now.getMinutes())
+                .padStart(2, '0');
+
+            let seconds = String(now.getSeconds())
+                .padStart(2, '0');
+
+            let time = hours + ":" +
+                       minutes + ":" +
+                       seconds;
+
+            document.getElementById("clock")
+                .textContent = time;
+
+            let options = {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            };
+
+            document.getElementById("date")
+                .textContent = now.toLocaleDateString(
+                    'en-IN', options
+                );
+        }
+
+        updateClock();
+
+        setInterval(updateClock, 1000);
+
+    </script>
+
+</body>
+
+</html>
